@@ -11,8 +11,10 @@
 
 (function (window) {
     var currencyManager = function () {};
+
     currencyManager.prototype = {
         //in here somewhere need to get bitcoin / Auroracoin value from VPS
+        /*
         updateExchangeRate: function () {
             //upadate the value of AuroraCoin to bitcoin
             var tickresult
@@ -20,10 +22,34 @@
                     tickresult = response ;
                     AURExchangeRate = tickresult.result.Last;
             });
+            //return util.getJSON('https://api.bitcoinaverage.com/ticker/global/' + currency)
+            var curr = preferences.getCurrency();
+            var sym = getSymbol();
+            //then(function (currency) {
+                  //curr = currency ;
+            util.getJSON('https://apiv2.bitcoinaverage.com/indices/global/ticker/short?crypto=BTC&fiat=ISK').then(function (response){
+
+                //tickresult = response ;
+                //BTCISKLast = tickresult.BTCISK.last;
+                BTCISKLast = response['BTCISK.last'];
+                //return preferences.setExchangeRate(response['BTCISK.last'] * AURExchangeRate);
+                return preferences.setExchangeRate(BTCISKLast * AURExchangeRate);
+            });
+        },
+        */
+        updateExchangeRate: function () {
+            //upadate the value of AuroraCoin to bitcoin
+            var tickresult
+            var curr
+            util.getJSON('https://bittrex.com/api/v1.1/public/getticker?market=btc-aur').then(function (response){
+                    tickresult = response ;
+                    AURExchangeRate = tickresult.result.Last;
+            });
             return preferences.getCurrency().then(function (currency) {
-                    return util.getJSON('https://api.bitcoinaverage.com/ticker/global/' + currency);
-            }).then(function (response) {
-                return preferences.setExchangeRate(response['last'] * AURExchangeRate);
+                    //curr = currency ;
+                    return util.getJSON('https://apiv2.bitcoinaverage.com/indices/global/ticker/short?crypto=BTC&fiat=ISK').then(function (response) {
+                      return preferences.setExchangeRate(response['BTCISK.last'] * AURExchangeRate);
+                    });
             });
         },
 
