@@ -1,10 +1,13 @@
-![Auroracoin Official Logo.](/data/auroracoin128.png)
-# Auroracoin Browser Wallet Extension 2.2.0
+# Auroracoin Browser Wallet Extension 
 
 ### Provided by Auroracoin101 Project Team
 Auroracoin wallet in your browser.  
 
-## Releases
+#### moved to [github/Auroracoin101](https://github.com/auroracoin101/auroracoin-browser-wallet)
+
+#### [Chrome Webstore](https://chromewebstore.google.com/detail/auroracoin-browser-wallet/ibbbddhliiimfdpadncmdnbhgagplagk)
+
+### History
 | Version    | Description |
 |------------------ |------------ |
 |  1.3.0 | Updated for Multi-Algo |
@@ -23,15 +26,3 @@ Auroracoin wallet in your browser.
 |  2.1.2 | Added Electrum server @ electrum1.valhala.is |
 |  2.1.3 | Insert OP_RETURN transaction support 
 |  2.2.0 | Added Dark Mode, Fixed Currency Exchange, increased txfee to 0.0003 for large transactions (miners) |
-
-## Security
-
-The private key is stored securely in your local browser storage and you may choose to encrypt it,
-for added Security.
-
-Transactions are signed in the browser and are published to Auroracoin Network via Electrum(x) Servers.
-
-The private key will only leave the browser to be synced with other Chrome browsers you are signed into,
-This is managed by the Browser Software.
-
-Encrypting the private key ensures that nobody will know the private key without the password, not even this extension.
